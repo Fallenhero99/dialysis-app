@@ -27,6 +27,8 @@ const PatientSchema = new Schema<IPatient>(
         dryWeight: { type: Number, required: true },
         unit: { type: String, required: true },
         machineId: { type: String, required: true },
+        scheduledDays: { type: [String], required: true },
+        targetDuration: { type: Number, required: true },
     },
     { timestamps: true }
 );
