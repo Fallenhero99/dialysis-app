@@ -47,7 +47,7 @@ router.post('/sessions', async (req: Request, res: Response) => {
         const patient = await Patient.findById(req.body.patientId);
         if(!patient) return res.status(404).json({ error:'Patient not found'});
 
-        // Doubt
+        
         const anomalies = detectAnomalies({
             preWeight: req.body.preWeight,
             dryWeight: patient.dryWeight,
@@ -70,8 +70,7 @@ router.post('/sessions', async (req: Request, res: Response) => {
 });
 
 
-// Doubt
-// PATCH /api/sessions/:id - update notes, vitals, status, end time
+
 router.patch('/sessions/:id', async (req: Request, res: Response) => {
     try {
         const session = await Session.findById(req.params.id).populate<{ patientId: any }>('patientId');
